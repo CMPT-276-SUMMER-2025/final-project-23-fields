@@ -2,14 +2,14 @@
 
 On the repo root, update README.md file with the project title, group members, and a brief description of the project
 
-#project title
+# project title
 ?
 
-#group members
+# group members
 
 Simon Lee
 YanTing Leung
 Zena Lang
 
-#brief description of the project
+# brief description of the project
 ?

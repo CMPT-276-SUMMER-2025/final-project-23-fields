@@ -7,9 +7,9 @@ On the repo root, update README.md file with the project title, group members, a
 
 # group members
 
-Simon Lee
-YanTing Leung
-Zena Lang
+Simon Lee  
+YanTing Leung  
+Zena Lang  
 
 # brief description of the project
 ?

@@ -12,4 +12,4 @@ YanTing Leung
 Zena Lang  
 
 # brief description of the project
-The target users of the budgeting application are mostly small to medium business owners that trade among countries and need to spend money on international shipments involving different currencies. Who need to plan the cheapest route for an international trade and wanted to have advice on how to reduce their costs.
+Target users are mostly people who oftenly go online shopping from stores in other countries or freelancers with income from different countries, these trading among countries and international shipments involve different currencies. Therefore they might need to know the best buying time and as well as  advice on how to reduce their costs.

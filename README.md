@@ -3,7 +3,7 @@
 On the repo root, update README.md file with the project title, group members, and a brief description of the project
 
 # project title
-?
+Simple Budgeting Application
 
 # group members
 

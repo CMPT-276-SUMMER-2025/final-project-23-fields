@@ -1,0 +1,42 @@
+/*Division title settings*/
+.title_text{
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.box_title{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+
+}
+
+/*Division button settings*/
+.div_button{
+    background-color: rgb(196, 193, 193);
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-family: Arial;
+}
+
+/*Division settings*/
+.home_box{
+    width: 1fr;
+    height: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 60px;
+    padding-left: 40px;
+    padding-top: 50px;
+    border-style: dotted;
+    border-color: rgb(80, 162, 255);
+    border-width: 5px;
+    display: grid;
+    grid-template-rows: 75px 1fr 1fr 1fr;
+
+}
+

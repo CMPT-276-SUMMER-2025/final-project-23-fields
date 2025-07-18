@@ -1,3 +1,7 @@
+button{
+    cursor: pointer;
+}
+
 /*Division title settings*/
 .title_text{
     font-family: Arial;
@@ -17,26 +21,69 @@
 .div_button{
     background-color: rgb(196, 193, 193);
     border-radius: 5px;
+    border: none;
     width: fit-content;
     height: fit-content;
     padding: 10px;
     font-family: Arial;
+    transition: background-color 0.1s;
+    margin-top: 10px;
+}
+
+.div_button:active{
+    background-color: rgb(134, 133, 133);
 }
 
 /*Division settings*/
-.home_box{
+.home_box, .upload_statement_box, .catagorization_box, .dashboard_box, .currency_tools_box{
     width: 1fr;
     height: 300px;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 60px;
     padding-left: 40px;
+    padding-right: 40px;
     padding-top: 50px;
     border-style: dotted;
     border-color: rgb(80, 162, 255);
     border-width: 5px;
     display: grid;
-    grid-template-rows: 75px 1fr 1fr 1fr;
 
 }
 
+.home_box{
+    grid-template-rows: 75px 1fr 1fr 1fr;
+}
+
+.upload_statement_box{
+    grid-template-rows: 75px 1fr 1fr;
+}
+
+.catagorization_box{
+    grid-template-rows: 75px 2fr 1fr;
+}
+
+.dashboard_box{
+    grid-template-rows: 75px 2fr 1fr 1fr;
+}
+
+.currency_tools_box{
+    grid-template-rows: 75px 2fr 1fr;
+}
+
+/*Elements inside divisions*/
+.upload_document{
+    background-color: gray;
+    height: fit-content;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.pie_chart_zone{
+    background-color: gray;
+    place-content: center center;
+}
+
+.currency_tools_records{
+    background-color: gray;
+}

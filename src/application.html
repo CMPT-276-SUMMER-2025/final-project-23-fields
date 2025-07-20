@@ -31,8 +31,19 @@
         </div>
 
         <div class="upload_document">
-            <button onclick="">Choose file</button>
-            No file chosen
+            
+            <button onclick="" style="height: fit-content; width: fit-content;">Choose file</button>
+        <!-- Below is for Javascript-->
+            <div class="pdf_item">
+                <div style="">
+                    <button class="pdf_remove_button" onclick="console.log('remove');">
+                        <img src="icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
+                    </button>
+                    <img class="pdf_icon" src="icons/pdf_logo.png">
+                </div>
+                <p style="margin-left: 25px;">File name here</p>
+            </div>
+        <!-- Above is for Javascript-->
         </div>
 
         <button class="div_button">Extract Transactions</button>

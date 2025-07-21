@@ -3,6 +3,7 @@
 <head>
     <title>23 Final project</title>
     <link rel="stylesheet" href="application.css">
+    <script src="upload_file.js"></script>
 </head>
 
 <body>
@@ -32,10 +33,12 @@
 
         <div class="upload_document">
             
-            <button onclick="" style="height: fit-content; width: fit-content;">Choose file</button>
+            
+            <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();">
         <!-- Below is for Javascript-->
             <div class="pdf_item">
-                <div style="">
+                <div>
                     <button class="pdf_remove_button" onclick="console.log('remove');">
                         <img src="icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
                     </button>
@@ -102,7 +105,9 @@
         <button class="div_button" onclick="">Alert Me When Rates Drop</button>
     </div>
 
+    <script>
 
+    </script>
 </body>
 
 

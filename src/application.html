@@ -35,18 +35,7 @@
             
             
             <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
-            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();">
-        <!-- Below is for Javascript-->
-            <div class="pdf_item">
-                <div>
-                    <button class="pdf_remove_button" onclick="console.log('remove');">
-                        <img src="icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
-                    </button>
-                    <img class="pdf_icon" src="icons/pdf_logo.png">
-                </div>
-                <p style="margin-left: 25px;">File name here</p>
-            </div>
-        <!-- Above is for Javascript-->
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="addEventListener('change',update_file_name); show_uploaded_file();" >
         </div>
 
         <button class="div_button">Extract Transactions</button>

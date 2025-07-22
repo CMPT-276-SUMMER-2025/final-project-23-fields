@@ -37,7 +37,6 @@ button{
 /*Division settings*/
 .home_box, .upload_statement_box, .catagorization_box, .dashboard_box, .currency_tools_box{
     width: 1fr;
-    height: 300px;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 60px;
@@ -53,22 +52,27 @@ button{
 
 .home_box{
     grid-template-rows: 75px 1fr 1fr 1fr;
+    height: 300px;
 }
 
 .upload_statement_box{
-    grid-template-rows: 75px 1fr 1fr;
+    grid-template-rows: 75px 1fr 75px;
+    height: fit-content;
 }
 
 .catagorization_box{
     grid-template-rows: 75px 2fr 1fr;
+    height: 300px;
 }
 
 .dashboard_box{
     grid-template-rows: 75px 2fr 1fr 1fr;
+    height: 300px;
 }
 
 .currency_tools_box{
     grid-template-rows: 75px 2fr 1fr;
+    height: 300px;
 }
 
 /*Elements inside divisions*/

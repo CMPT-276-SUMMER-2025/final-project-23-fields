@@ -37,7 +37,6 @@ button{
 /*Division settings*/
 .home_box, .upload_statement_box, .catagorization_box, .dashboard_box, .currency_tools_box{
     width: 1fr;
-    height: 300px;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 60px;
@@ -53,30 +52,36 @@ button{
 
 .home_box{
     grid-template-rows: 75px 1fr 1fr 1fr;
+    height: 300px;
 }
 
 .upload_statement_box{
-    grid-template-rows: 75px 1fr 1fr;
+    grid-template-rows: 75px 1fr 75px;
+    height: fit-content;
 }
 
 .catagorization_box{
     grid-template-rows: 75px 2fr 1fr;
+    height: 300px;
 }
 
 .dashboard_box{
     grid-template-rows: 75px 2fr 1fr 1fr;
+    height: 300px;
 }
 
 .currency_tools_box{
     grid-template-rows: 75px 2fr 1fr;
+    height: 300px;
 }
 
 /*Elements inside divisions*/
 .upload_document{
-    background-color: gray;
     height: fit-content;
     padding-top: 3px;
     padding-bottom: 3px;
+    display: grid;
+    grid-template-columns: 125px 1fr;
 }
 
 .pie_chart_zone{
@@ -86,4 +91,24 @@ button{
 
 .currency_tools_records{
     background-color: gray;
+}
+
+.pdf_item{
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    width: 150px;
+}
+
+.pdf_icon{
+    height: 100px;
+}
+
+.pdf_remove_button{
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top:-75px;
+    left: 100px;
+    border: none;
+    background-color: transparent;
 }

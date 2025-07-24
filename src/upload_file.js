@@ -1,7 +1,4 @@
-//This is for the pdf upload functions
-let uploaded_file="";
-let have_file = false;
-let file_name="";
+
 
 function update_file_name(event){
     console.log(event);
@@ -18,10 +15,9 @@ function show_uploaded_file(){
         const pdf_icon_output = document.querySelector('.upload_document');
         pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();">
-        <!-- Below is for Javascript-->
             <div class="pdf_item">
                 <div>
-                    <button class="pdf_remove_button" onclick="remove_pdf_file();">
+                    <button class="pdf_remove_button" onclick="havefile(); remove_pdf_file();">
                         <img src="icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
                     </button>
                     <img class="pdf_icon" src="icons/pdf_logo.png">

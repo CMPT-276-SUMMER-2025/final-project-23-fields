@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>23 Final project</title>
+    <link rel="stylesheet" href="application.css">
+    <script src="upload_file.js"></script>
+</head>
+
+<body>
+    <div class="home_box">
+        
+        <div class="box_title">
+            <div>
+                <img src="icons/home.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Home</p>
+        </div>
+
+        <button class="div_button" onclick="">Upload Bank Statement</button>
+        <button class="div_button" onclick="">View Dashboard</button>
+        <button class="div_button" onclick="">Currency Tools</button>
+    </div>
+
+    
+    <div class="upload_statement_box">
+        
+        <div class="box_title">
+            <div>
+                <img src="icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Upload Statement</p>
+        </div>
+
+        <div class="upload_document">
+            
+            
+            <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="addEventListener('change',update_file_name); show_uploaded_file();" >
+        </div>
+
+        <button class="div_button">Extract Transactions</button>
+    </div>
+
+    <div class="catagorization_box">
+        
+        <div class="box_title">
+            <div>
+                <img src="icons/catagory.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Catagorization</p>
+        </div>
+
+        <div style="background-color: yellow;">Insert transaction catagories here</div>
+
+        <div>
+            <button class="div_button" style="display: inline-flex; margin-right: 5px;" onclick="">Edit Tags</button>
+            <button class="div_button" style="display: inline-flex;" onclick="">Confirm & Continue</button>
+        </div>
+    </div>
+
+    <div class="dashboard_box">
+        
+        <div class="box_title">
+            <div>
+                <img src="icons/dashboard.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Dashboard</p>
+        </div>
+
+        <div class="pie_chart_zone">
+            <p>Pie chart here</p>
+        </div>
+
+        <div>
+            <p>Total spend of this month:</p>
+        </div>
+
+        <button class="div_button" onclick="">Ask AI for suggestions</button>
+    </div>
+
+    <div class="currency_tools_box">
+        
+        <div class="box_title">
+            <div>
+                <img src="icons/currency.png style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Currency Tools</p>
+        </div>
+
+        <div class="currency_tools_records">
+            <p>Insert currency records here</p>
+        </div>
+
+        <button class="div_button" onclick="">Alert Me When Rates Drop</button>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+
+</html>

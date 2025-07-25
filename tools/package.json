@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "pdfjs-dist": "^5.3.93"
+  },
+  "dependencies": {
+    "gulp": "^5.0.1"
+  }
+}

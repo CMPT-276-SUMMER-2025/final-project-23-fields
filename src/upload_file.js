@@ -1,18 +1,7 @@
-
-
-/*function update_file_name(event){
-    console.log(event);
-    const files = event.target.name;
-    file_name=files[0].name;onchange="addEventListener('change',update_file_name);
-}*/
-
 function show_uploaded_file(){
     uploaded_file = document.querySelector('.uploaded_pdf');
     validation();
-    if (is_pdf){
-    //display pdf icon, name and remove button
-    if(uploaded_file.value !== ""){
-        have_file = true;
+    if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements
         //locate div and change content
         const pdf_icon_output = document.querySelector('.upload_document');
         pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
@@ -26,12 +15,18 @@ function show_uploaded_file(){
                 </div>
                 <p style="margin-left: 25px; font-family: Arial; font-size: 16px; font-weight: 600;">${uploaded_file.files[0].name}</p>
             </div>`;
+    
     }
-}
 }
 
 function remove_pdf_file(){
+    //reset variables
+    uploaded_file="";
     have_file = false;
+    file_name="";
+    is_pdf=false;
+    pdf_too_large=false;
+
     const pdf_icon_output = document.querySelector('.upload_document');
     pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"  onchange="show_uploaded_file();" >`;

@@ -13,3 +13,6 @@ Zena Lang
 
 # brief description of the project
 Target users are mostly people who oftenly go online shopping from stores in other countries or freelancers with income from different countries, these trading among countries and international shipments involve different currencies. Therefore they might need to know the best buying time and as well as  advice on how to reduce their costs.
+
+# How to modify pdf.js related code
+pdf.js is a Javascript library for loading and showing pdf files, a prebuilt verion of pdf.js is installed in the "tools" directory as the "pdfjs-5.3.93-dist" folder, while "node_modules", "package-lock.json" and "package.json" are the files generated with the installation, I would advice not to touch it.

@@ -42,16 +42,63 @@ function remove_pdf_file(){
             document.getElementById("uploadbtn").style.display = "block"
 }
 
-async function processPDF() {
-    if (uploaded_file == "") {
-        alert("Please upload a file")
-        return;
-    }
-     const reader = new FileReader();
-      reader.onload = async function () {
-        console.log("working")
-        const typedArray = new Uint8Array(reader.result);
+const HF_API_URL = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-VL-7B-Instruct";
+const HF_API_Token = "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"
 
+async function sendToHuggingFace(text) {
+  const response = await fetch(HF_API_URL, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${HF_API_Token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      inputs: text,
+      parameters: {
+        temperature: 0.7,
+        max_new_tokens: 500
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch from Hugging Face");
+  }
+
+  const data = await response.json();
+  console.log("Raw HF Response:", data);
+  return data[0]?.generated_text || JSON.stringify(data);
+}
+
+
+async function processPDF() {
+    let pdfText;
+  try {
+    pdfText = await readPDF();
+    console.log("Here's the text:\n" + pdfText);
+  } catch (err) {
+    console.error("Error reading PDF:", err);
+    return;
+  }
+    const result = await sendToHuggingFace("Please categorize the following transactions:\n" + pdfText);
+    
+  console.log("Categorized Output:", result);
+
+}
+
+function readPDF() {
+  return new Promise((resolve, reject) => {
+    if (!uploaded_file) {
+      alert("Please upload a file");
+      reject("No file uploaded");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = async function () {
+      try {
+        const typedArray = new Uint8Array(reader.result);
         const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
 
         let fullText = '';
@@ -61,9 +108,17 @@ async function processPDF() {
           const text = content.items.map(item => item.str).join(' ');
           fullText += text + '\n';
         }
-    
 
-        console.log("Extracted Text:", fullText);
-    }
-    reader.readAsArrayBuffer(uploaded_file)
+        resolve(fullText);
+      } catch (err) {
+        reject(err);
+      }
+    };
+
+    reader.onerror = function (err) {
+      reject(err);
+    };
+
+    reader.readAsArrayBuffer(uploaded_file);
+  });
 }

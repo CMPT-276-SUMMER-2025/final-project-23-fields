@@ -31,3 +31,27 @@ function remove_pdf_file(){
     pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"  onchange="show_uploaded_file();" >`;
 }
+//This is a temporary PDF reader meant to create valid input for API to read!!!
+async function processPDF() {
+    let file = document.getElementsByClassName("uploaded_pdf")
+  
+     const reader = new FileReader();
+      reader.onload = async function () {
+        console.log("working")
+        const typedArray = new Uint8Array(reader.result);
+
+        const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
+
+        let fullText = '';
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const content = await page.getTextContent();
+          const text = content.items.map(item => item.str).join(' ');
+          fullText += text + '\n';
+        }
+    
+
+        console.log("Extracted Text:", fullText);
+    }
+    reader.readAsArrayBuffer(file)
+}

@@ -6,7 +6,7 @@
     <script src="upload_file.js"></script>
     <script src="pdf_validation.js"></script>
     <!--<script src="../tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script> <!--This is ONLY TO BE USED FOR TESTING API-->
 </head>
 
 <body>
@@ -41,7 +41,7 @@
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
         </div>
 
-        <button class="div_button">Extract Transactions</button>
+        <button class="div_button" onclick="processPDF()">Extract Transactions</button>
     </div>
 
     <div class="catagorization_box">

@@ -42,7 +42,7 @@ function remove_pdf_file(){
             document.getElementById("uploadbtn").style.display = "block"
 }
 
-const HF_API_URL = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-VL-7B-Instruct";
+const HF_API_URL = "https://api-inference.huggingface.co/models/declare-lab/flan-alpaca-large";
 const HF_API_Token = "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"
 
 async function sendToHuggingFace(text) {
@@ -122,3 +122,4 @@ function readPDF() {
     reader.readAsArrayBuffer(uploaded_file);
   });
 }
+

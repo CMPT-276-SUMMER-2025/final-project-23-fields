@@ -1,4 +1,4 @@
-function validation(){
+/*function validation(){
     const pdf_url = `${uploaded_file.value}`;
     if(pdf_url !== "" && uploaded_file.files[0].name.split('.')[1] === "pdf" && uploaded_file.files[0].size < 10*1024*1024){ //If there is a file less than 10 MB uploaded and ended in .pdf
         is_pdf = true;
@@ -53,7 +53,7 @@ function validation(){
         console.log("invalid upload file");
     }
     console.log(uploaded_file.files[0].name.split('.')[1]);//extract extension from the file name
-}
+}*/
 
 
 

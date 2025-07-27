@@ -1,4 +1,4 @@
-function show_uploaded_file(){
+/*function show_uploaded_file(){
     uploaded_file = document.querySelector('.uploaded_pdf');
     validation();
     if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements
@@ -17,9 +17,9 @@ function show_uploaded_file(){
             </div>`;
     
     }
-}
+}*/
 
-function remove_pdf_file(){
+/*function remove_pdf_file(){
     //reset variables
     uploaded_file="";
     have_file = false;
@@ -30,16 +30,19 @@ function remove_pdf_file(){
     const pdf_icon_output = document.querySelector('.upload_document');
     pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"  onchange="show_uploaded_file();" >`;
-}
+}*/
 //This is a temporary PDF reader meant to create valid input for API to read!!!
 async function processPDF() {
-    let file = document.getElementsByClassName("uploaded_pdf")
-  
-     const reader = new FileReader();
-      reader.onload = async function () {
-        console.log("working")
-        const typedArray = new Uint8Array(reader.result);
+  let file = document.getElementsByClassName("uploaded_pdf")[0].files[0];
+  console.log(file);
 
+  try {
+    const reader = new FileReader();
+
+    reader.onload = async function () {
+      try {
+        console.log("working");
+        const typedArray = new Uint8Array(reader.result);
         const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
 
         let fullText = '';
@@ -49,9 +52,17 @@ async function processPDF() {
           const text = content.items.map(item => item.str).join(' ');
           fullText += text + '\n';
         }
-    
 
         console.log("Extracted Text:", fullText);
-    }
-    reader.readAsArrayBuffer(file)
+      } catch (innerErr) {
+        console.error("PDF parsing error:", innerErr);
+      }
+    };
+
+    reader.readAsArrayBuffer(file);
+
+  } catch (outerErr) {
+    console.error("Reader setup error:", outerErr);
+  }
+    
 }

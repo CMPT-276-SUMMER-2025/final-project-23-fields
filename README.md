@@ -15,4 +15,8 @@ Zena Lang
 Target users are mostly people who oftenly go online shopping from stores in other countries or freelancers with income from different countries, these trading among countries and international shipments involve different currencies. Therefore they might need to know the best buying time and as well as  advice on how to reduce their costs.
 
 # How to modify pdf.js related code
-pdf.js is a Javascript library for loading and showing pdf files, a prebuilt verion of pdf.js is installed in the "tools" directory as the "pdfjs-5.3.93-dist" folder, while "node_modules", "package-lock.json" and "package.json" are the files generated with the installation, I would advice not to touch it.
+pdf.js is a Javascript library for loading and showing pdf files, a prebuilt verion of pdf.js is installed in the "tools" directory as the "pdfjs-5.3.93-dist" folder, while "node_modules", "package-lock.json" and "package.json" are the files generated with the installation, I would advice not to touch it. At the bottom of index.html body, there is a script element with type "module", the pdfjslib is what needed to configure the pdf.js other than linking build/pdf.mjs at the head as a Javascript file. All major uses should be done in the validation.js, inside loadingtask.promise.then() as that is what being executed after the loadingtask successfully load the pdf file.
+
+The "pdf" object refer to the pdfjs-readable version of the uploaded pdf file.
+
+The basic task includes accessing the number of page of the pdf using pdf.numpage (async), and the file size by .size function of either "pdf" or the upload_file.files[0]. (sync version)

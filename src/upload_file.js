@@ -42,7 +42,7 @@ function remove_pdf_file(){
             document.getElementById("uploadbtn").style.display = "block"
 }
 
-const HF_API_URL = "https://api-inference.huggingface.co/models/declare-lab/flan-alpaca-large";
+const HF_API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct";
 const HF_API_Token = "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"
 
 async function sendToHuggingFace(text) {
@@ -69,22 +69,43 @@ async function sendToHuggingFace(text) {
   console.log("Raw HF Response:", data);
   return data[0]?.generated_text || JSON.stringify(data);
 }
-
+const endpointUrl = "https://jsshpltq6hsd01eh.us-east-1.aws.endpoints.huggingface.cloud";
+const hfToken = "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";
 
 async function processPDF() {
-    let pdfText;
+    /*let pdfText;
   try {
     pdfText = await readPDF();
     console.log("Here's the text:\n" + pdfText);
   } catch (err) {
     console.error("Error reading PDF:", err);
     return;
-  }
-    const result = await sendToHuggingFace("Please categorize the following transactions:\n" + pdfText);
+  }*/
+    //const result = await sendToHuggingFace("Please categorize the following transactions:\n" + pdfText);
     
-  console.log("Categorized Output:", result);
+  //console.log("Categorized Output:", result);
+    const response = await fetch(endpointUrl, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${hfToken}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      inputs: "Hi there"
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const result = await response.json();
+  console.log("Gemma response:", result);
 
 }
+
+processPDF()
+
 
 function readPDF() {
   return new Promise((resolve, reject) => {

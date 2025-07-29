@@ -1,6 +1,6 @@
 //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              DO NOT DELETE THIS KEY!!!!!!!!!!!!!!!!!
 
-async function queryHuggingFace() {
+/*async function queryHuggingFace() {
   const response = await fetch(
     "https://dszlykgsugh95k5a.us-east-1.aws.endpoints.huggingface.cloud/v1/chat/completions",
     {
@@ -28,6 +28,6 @@ async function queryHuggingFace() {
 
   const result = await response.json();
   console.log(result.choices[0].message.content);
-}
+}*/
 
 queryHuggingFace().catch(console.error);

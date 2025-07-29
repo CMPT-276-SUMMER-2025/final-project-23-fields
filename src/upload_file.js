@@ -42,7 +42,7 @@ function remove_pdf_file(){
             document.getElementById("uploadbtn").style.display = "block"
 }
 
-/*const HF_API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct";
+const HF_API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct";
 const HF_API_Token = "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"
 
 async function sendToHuggingFace(text) {
@@ -70,7 +70,7 @@ async function sendToHuggingFace(text) {
   return data[0]?.generated_text || JSON.stringify(data);
 }
 const endpointUrl = "https://jsshpltq6hsd01eh.us-east-1.aws.endpoints.huggingface.cloud";
-const hfToken = "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";*/
+const hfToken = "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";
 
 async function processPDF() {
     /*let pdfText;

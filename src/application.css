@@ -35,7 +35,7 @@ button{
 }
 
 /*Division settings*/
-.home_box, .upload_statement_box, .catagorization_box, .dashboard_box, .currency_tools_box{
+.home_box, .upload_statement_box, .upload_statement_box_invalid_file, .catagorization_box, .dashboard_box, .currency_tools_box{
     width: 1fr;
     margin-left: 50px;
     margin-right: 50px;
@@ -57,6 +57,11 @@ button{
 
 .upload_statement_box{
     grid-template-rows: 75px 1fr 75px;
+    height: fit-content;
+}
+
+.upload_statement_box_invalid_file{
+    grid-template-rows: 75px 1fr 0.5fr 75px;
     height: fit-content;
 }
 
@@ -111,4 +116,14 @@ button{
     left: 100px;
     border: none;
     background-color: transparent;
+}
+
+.pdf_error_message{
+    background-color: gray;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Arial;
+    border-radius: 3px;
+    height: fit-content;
+    
 }

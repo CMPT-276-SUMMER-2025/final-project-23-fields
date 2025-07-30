@@ -1,4 +1,4 @@
-async function validation(){
+async function validation(json_input){
     const pdf_url = `${uploaded_file.value}`;
     //await new Promise((resolve,reject) => setTimeout(resolve, 2000));
     if(pdf_url !== "" && uploaded_file.files[0].name.split('.')[1] === "pdf" && uploaded_file.files[0].size < 10*1024*1024){ //If there is a file less than 10 MB uploaded and ended in .pdf
@@ -6,6 +6,8 @@ async function validation(){
         have_file=true;
         pdf_too_large=false;
         console.log(pdf_url);
+        let temp_json = {};
+        
         
         
         //Lines below are for reading the uploaded file with pdf.js, and actions to be carried using the result values
@@ -21,21 +23,32 @@ async function validation(){
             const loadingTask = pdfjsLib.getDocument(typedarray).promise;
 
             loadingTask.then(pdf => {
-                console.log(pdf.numPages);
-                console.log(uploaded_file.files[0].size);
+                async function loadTextContent(pdf_file,json_input) { //for text pdf but not scanned pictures, pages take some time to load, change console log to json once done
+                    let full_text = "";
+                    console.log("getting text");
+                        for (let i=1;i<pdf_file.numPages+1;i++){
+                            const page = await pdf_file.getPage(i);
+                            const content = await page.getTextContent();
+                            const page_text = content.items.map(item => item.str).join(' ');
+                            full_text = full_text + "\n" + page_text;
+                        }
+                        //let temp_json = {name: "loaded content", content: full_text};
+                        json_input.content = full_text;
+                        //console.log(pdf_json_input);
+                }
 
                 //access text content in the file
                 
-                /*if(pdf.numPages > 10){
-                    pdf_too_large=true;
-                    console.log("file too big, too many pages");
-                    
+                async function update_varibles_temp() {
+                    loadTextContent(pdf,json_input);                    
+                    await sleep(3000);
+
                 }
-                else{
-                    pdf_too_large=false;
-                    console.log("numpage ok");
-                }*/
-                loadTextContent(pdf);
+                update_varibles_temp();
+                console.log(pdf.numPages);
+                console.log(uploaded_file.files[0].size);                
+                //temp_json = loadTextContent(pdf);
+                //return temp_json;
             });
         };
         
@@ -46,6 +59,8 @@ async function validation(){
         reader.onerror = function(event) {
         console.error("Error reading PDF file:", event.target.error);
         };
+        console.log(temp_json);
+        //return temp_json;
     }
     else if(uploaded_file.files[0].name.split('.')[1] !== "pdf"){
         console.log("please upload a pdf file");
@@ -62,19 +77,13 @@ async function validation(){
         console.log("invalid upload file");
     }
     console.log(uploaded_file.files[0].name.split('.')[1]);//extract extension from the file name
-    
+    console.log(pdf_json_input);
 }
 
 
 
 
-async function loadTextContent(pdf_file) { //for text pdf but not scanned pictures, pages take some time to load, change console log to json once done
-    let full_text = "";
-        for (let i=1;i<pdf_file.numPages+1;i++){
-            const page = await pdf_file.getPage(i);
-            const content = await page.getTextContent();
-            const page_text = content.items.map(item => item.str).join(' ');
-            full_text = full_text + "\n" + page_text;
-        }
-        console.log(full_text);
-    }
+
+function sleep(ms){
+    return new Promise((r) => {setTimeout(r,ms)});
+}

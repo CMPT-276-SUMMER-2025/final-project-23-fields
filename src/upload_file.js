@@ -12,6 +12,10 @@ async function show_uploaded_file(){
     console.log(pdf_json_input);
     await update_varibles();
     console.log(pdf_json_input);
+    if(pdf_json_input.content !== ""){
+        pdf_json_input.name = "text transaction record";
+        transaction_json = JSON.stringify(pdf_json_input);
+    }
     //console.log(have_file, is_pdf, pdf_too_large);
     await replace();
 }

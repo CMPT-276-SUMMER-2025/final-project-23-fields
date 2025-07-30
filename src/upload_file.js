@@ -165,7 +165,7 @@ async function processPDF() {
         messages: [
           {
             role: "user",
-            content: "Write just a summary of how to budget myself based on this data:"
+            content: "Say Hello to everyone and tell them this area is under construction"
           }
         ]
       })

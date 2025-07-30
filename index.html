@@ -41,10 +41,10 @@
             
             
             <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
-            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="processPDF()//show_uploaded_file();" >
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
         </div>
 
-        <button class="div_button" onclick="processPDF()">Extract Transactions</button>
+        <button class="div_button" Onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
     </div>
 
     <div class="catagorization_box">
@@ -108,6 +108,13 @@
         let file_name="";
         let is_pdf=false;
         let pdf_too_large=true;
+        let invalid_file = false;
+        let pdf_json_input = {
+            name: "input",
+            content: "",
+        };
+        let transaction_json = "";
+        
     </script>
 
     <!--pdf.js configurations-->

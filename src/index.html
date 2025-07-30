@@ -40,7 +40,7 @@
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
         </div>
 
-        <button class="div_button">Extract Transactions</button>
+        <button class="div_button" Onclick="console.log(pdf_json_input.content)">Extract Transactions</button>
     </div>
 
     <div class="catagorization_box">
@@ -104,6 +104,12 @@
         let file_name="";
         let is_pdf=false;
         let pdf_too_large=true;
+        let invalid_file = false;
+        let pdf_json_input = {
+            name: "input",
+            content: "",
+        };
+        
     </script>
 
     <!--pdf.js configurations-->

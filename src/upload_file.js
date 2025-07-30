@@ -70,7 +70,7 @@ async function processPDF() {
         messages: [
           {
             role: "user",
-            content: "What is your name?"
+            content: "Write just a summary of how to budget myself based on this data:"
           }
         ]
       })
@@ -83,6 +83,7 @@ async function processPDF() {
   }
 
   const result = await response.json();
+  document.getElementById("summary").textContent = result.choices[0].message.content;
   console.log(result.choices[0].message.content);
     
 }

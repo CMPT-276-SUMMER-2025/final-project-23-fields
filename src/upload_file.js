@@ -1,4 +1,4 @@
-/*function show_uploaded_file(){
+function show_uploaded_file(){
     uploaded_file = document.querySelector('.uploaded_pdf');
     validation();
     if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements
@@ -17,9 +17,9 @@
             </div>`;
     
     }
-}*/
+}
 
-/*function remove_pdf_file(){
+function remove_pdf_file(){
     //reset variables
     uploaded_file="";
     have_file = false;
@@ -30,39 +30,38 @@
     const pdf_icon_output = document.querySelector('.upload_document');
     pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"  onchange="show_uploaded_file();" >`;
-}*/
-//This is a temporary PDF reader meant to create valid input for API to read!!!
+}
+
 async function processPDF() {
   let file = document.getElementsByClassName("uploaded_pdf")[0].files[0];
   console.log(file);
 
-  try {
-    const reader = new FileReader();
+  const response = await fetch(
+    "https://dszlykgsugh95k5a.us-east-1.aws.endpoints.huggingface.cloud/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer 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",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "tgi",
+        messages: [
+          {
+            role: "user",
+            content: "What is your name?"
+          }
+        ]
+      })
+    }
+  );
 
-    reader.onload = async function () {
-      try {
-        console.log("working");
-        const typedArray = new Uint8Array(reader.result);
-        const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
-
-        let fullText = '';
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-          const page = await pdf.getPage(pageNum);
-          const content = await page.getTextContent();
-          const text = content.items.map(item => item.str).join(' ');
-          fullText += text + '\n';
-        }
-
-        console.log("Extracted Text:", fullText);
-      } catch (innerErr) {
-        console.error("PDF parsing error:", innerErr);
-      }
-    };
-
-    reader.readAsArrayBuffer(file);
-
-  } catch (outerErr) {
-    console.error("Reader setup error:", outerErr);
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`HTTP error ${response.status}: ${errText}`);
   }
+
+  const result = await response.json();
+  console.log(result.choices[0].message.content);
     
 }

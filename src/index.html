@@ -2,14 +2,11 @@
 <html>
 <head>
     <title>23 Final project</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script> <!--This is ONLY TO BE USED FOR TESTING API-->
-    <script>
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-    </script>
     <link rel="stylesheet" href="application.css">
     <script src="pdf_validation.js"></script>
-    <script src="upload_file.js"></script>
+    <script src="upload_file.js" defer></script>
     <script src="../tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
+    <script src="API.js"></script>
 </head>
 
 <body>
@@ -44,7 +41,7 @@
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
         </div>
 
-        <button class="div_button" Onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
+        <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
     </div>
 
     <div class="catagorization_box">

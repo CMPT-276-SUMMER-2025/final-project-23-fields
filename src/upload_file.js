@@ -20,7 +20,6 @@ async function show_uploaded_file(){
     await replace();
 }
 
-
 async function replace() {
     /*const result = await validation();
     console.log(result);*/
@@ -74,7 +73,7 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Oops, it seems you haven't uploaded anything, please try again</p>
             </div>
 
-            <button class="div_button" Onclick="console.log(pdf_json_input.content)">Extract Transactions</button>`;
+            <button class="div_button" Onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
         else if(!is_pdf){
             if(!invalid_file){
@@ -103,7 +102,7 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Please sumbit a file that is ended in .pdf</p>
             </div>
 
-            <button class="div_button" Onclick="console.log(pdf_json_input.content)">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
         else if(pdf_too_large){
             if(!invalid_file){
@@ -131,7 +130,7 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Please submit a file that is smaller than 10MB</p>
             </div>
 
-            <button class="div_button" Onclick="console.log(pdf_json_input.content)">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
     }
 
@@ -146,39 +145,4 @@ function remove_pdf_file(){
     const pdf_icon_output = document.querySelector('.upload_document');
     pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"  onchange="show_uploaded_file();" >`;
-}
-
-async function processPDF() {
-  let file = document.getElementsByClassName("uploaded_pdf")[0].files[0];
-  console.log(file);
-
-  const response = await fetch(
-    "https://dszlykgsugh95k5a.us-east-1.aws.endpoints.huggingface.cloud/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer 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",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "tgi",
-        messages: [
-          {
-            role: "user",
-            content: "Say Hello to everyone and tell them this area is under construction"
-          }
-        ]
-      })
-    }
-  );
-
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`HTTP error ${response.status}: ${errText}`);
-  }
-
-  const result = await response.json();
-  document.getElementById("summary").textContent = result.choices[0].message.content;
-  console.log(result.choices[0].message.content);
-    
 }

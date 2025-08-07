@@ -13,7 +13,7 @@ const proxyUrl = "https://corsproxy.io/?";
         messages: [
           {
             role: "user",
-            content: "Summarize the following budgeting transactions and what I should cut down spending on: " + transaction_json
+            content: "Categorize each transaction in Json format and don't say anything else: " + transaction_json
           }
         ]
       })

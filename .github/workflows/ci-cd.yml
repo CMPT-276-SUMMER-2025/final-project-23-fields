@@ -1,4 +1,4 @@
-name: CI/CD for JS Website
+name: CI/CD for Project Website
 
 on:
   push:
@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies (optional)
-        run: npm install || echo "No dependencies"
-
       - name: Run Tests
         run: npm test
 
@@ -38,3 +35,10 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist 
+          
+  check-site-online:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if site is online
+        run: curl -I https://cmpt-276-summer-2025.github.io/final-project-23-fields/

@@ -3,7 +3,10 @@
 <head>
     <title>23 Final project</title>
     <link rel="stylesheet" href="application.css">
-    <script src="upload_file.js"></script>
+    <script src="pdf_validation.js"></script>
+    <script src="upload_file.js" defer></script>
+    <script src="../tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
+    <script src="API.js"></script>
 </head>
 
 <body>
@@ -35,10 +38,10 @@
             
             
             <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
-            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="addEventListener('change',update_file_name); show_uploaded_file();" >
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
         </div>
 
-        <button class="div_button">Extract Transactions</button>
+        <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
     </div>
 
     <div class="catagorization_box">
@@ -50,7 +53,7 @@
             <p class="title_text">Catagorization</p>
         </div>
 
-        <div style="background-color: yellow;">Insert transaction catagories here</div>
+        <div style="background-color: yellow;" id="summary">Insert transaction catagories here</div>
 
         <div>
             <button class="div_button" style="display: inline-flex; margin-right: 5px;" onclick="">Edit Tags</button>
@@ -82,7 +85,7 @@
         
         <div class="box_title">
             <div>
-                <img src="icons/currency.png style="height: 30px; width: 30px; object-fit: scale-down;">
+                <img src="icons/currency.png" style="height: 30px; width: 30px; object-fit: scale-down;">
             </div>
             <p class="title_text">Currency Tools</p>
         </div>
@@ -93,10 +96,29 @@
 
         <button class="div_button" onclick="">Alert Me When Rates Drop</button>
     </div>
-
+    
+    
+    <!--These are for the pdf upload functions-->
     <script>
-
+        let uploaded_file="";
+        let have_file = false;
+        let file_name="";
+        let is_pdf=false;
+        let pdf_too_large=true;
+        let invalid_file = false;
+        let pdf_json_input = {
+            name: "input",
+            content: "",
+        };
+        let transaction_json = "";
+        
     </script>
+
+    <!--pdf.js configurations-->
+    <script id="script" type="module">
+        pdfjsLib.GlobalWorkerOptions.workerSrc = '../tools/pdfjs-5.3.93-dist/build/pdf.worker.mjs';
+    </script>
+
 </body>
 
 

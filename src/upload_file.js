@@ -39,9 +39,9 @@ async function replace() {
             <div class="pdf_item">
                 <div>
                     <button class="pdf_remove_button" onclick="remove_pdf_file();">
-                        <img src="icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
+                        <img src="src/icons/remove_icon.png" style="height: 25px; width: 25px; object-fit: contain; margin: 0px;">
                     </button>
-                    <img class="pdf_icon" src="icons/pdf_logo.png">
+                    <img class="pdf_icon" src="src/icons/pdf_logo.png">
                 </div>
                 <p style="margin-left: 25px; font-family: Arial; font-size: 16px; font-weight: 600;">${uploaded_file.files[0].name}</p>
             </div>`;
@@ -57,7 +57,7 @@ async function replace() {
             const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
-                <img src="icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+                <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
             </div>
             <p class="title_text">Upload Statement</p>
             </div>
@@ -73,7 +73,7 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Oops, it seems you haven't uploaded anything, please try again</p>
             </div>
 
-            <button class="div_button" Onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
         else if(!is_pdf){
             if(!invalid_file){
@@ -86,7 +86,7 @@ async function replace() {
             console.log(pdf_icon_output);
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
-                <img src="icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+                <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
             </div>
             <p class="title_text">Upload Statement</p>
             </div>
@@ -114,7 +114,7 @@ async function replace() {
             const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
-                <img src="icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+                <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
             </div>
             <p class="title_text">Upload Statement</p>
             </div>

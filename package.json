@@ -1,6 +1,6 @@
 {
 "scripts": {
-  "test": "node tests/test.js"
+  "test": "node tests/test.js",
   "lint:js": "eslint '**/*.js'",
   "lint:css": "stylelint '**/*.css'",
   "lint:html": "htmlhint '**/*.html'",

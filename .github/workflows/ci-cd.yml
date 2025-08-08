@@ -21,23 +21,8 @@ jobs:
 
       - name: Run Tests
         run: npm test
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
           
   check-site-online:
-    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Check if site is online

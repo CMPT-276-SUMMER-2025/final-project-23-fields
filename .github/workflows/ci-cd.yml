@@ -22,7 +22,6 @@ jobs:
       - name: Run Tests
         run: npm test
 
-  deploy:
     needs: test
     runs-on: ubuntu-latest
 
@@ -37,7 +36,6 @@ jobs:
           publish_dir: .
           
   check-site-online:
-    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Check if site is online

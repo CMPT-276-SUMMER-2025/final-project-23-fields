@@ -1,9 +1,1 @@
-{
-"scripts": {
-  "test": "node tests/test.js",
-  "lint:js": "eslint '**/*.js'",
-  "lint:css": "stylelint '**/*.css'",
-  "lint:html": "htmlhint '**/*.html'",
-  "lint": "npm run lint:js && npm run lint:css && npm run lint:html"
-  }
-}
+{"scripts":{"test":"node tests/test.js","lint:js":"eslint '**/*.js'","lint:css":"stylelint '**/*.css'","lint:html":"htmlhint '**/*.html'","lint":"npm run lint:js && npm run lint:css && npm run lint:html"},"devDependencies":{"eslint":"^9.32.0","htmlhint":"^1.6.3","stylelint":"^16.23.1"}}

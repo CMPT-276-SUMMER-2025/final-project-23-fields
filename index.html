@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="src/application.css">
     <script src="src/pdf_validation.js"></script>
     <script src="src/upload_file.js"></script>
-    <script src="src/API.js"></script>
+    <script src="src/API.js" defer></script>
     <script src="tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
 </head>
 
@@ -91,7 +91,19 @@
         </div>
 
         <div class="currency_tools_records">
-            <p>Insert currency records here</p>
+           <label for="fromCurrency">From:</label>
+<input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
+
+<datalist id="fromCurrencyList">
+  <!-- Options get populated dynamically -->
+</datalist>
+
+<label for="toCurrency">To:</label>
+<input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
+
+<datalist id="toCurrencyList">
+  <!-- Options get populated dynamically -->
+</datalist>
         </div>
 
         <button class="div_button" onclick="">Alert Me When Rates Drop</button>

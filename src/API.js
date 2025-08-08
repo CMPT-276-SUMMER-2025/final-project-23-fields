@@ -30,3 +30,26 @@ const proxyUrl = "https://corsproxy.io/?";
   console.log(result.choices[0].message.content);
     
 }
+
+  const currencies = [
+    { code: "USD", name: "United States Dollar" },
+    { code: "EUR", name: "Euro" },
+    { code: "JPY", name: "Japanese Yen" },
+    { code: "GBP", name: "British Pound" },
+    { code: "CAD", name: "Canadian Dollar" },
+    { code: "AUD", name: "Australian Dollar" }
+  ];
+
+  function populateDataList(listId) {
+    const list = document.getElementById(listId);
+    currencies.forEach(currency => {
+      const option = document.createElement("option");
+      option.value = `${currency.name} (${currency.code})`;
+      list.appendChild(option);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    populateDataList("fromCurrencyList");
+    populateDataList("toCurrencyList");
+  });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>23 Final project</title>
     <link rel="stylesheet" href="src/application.css">
@@ -7,11 +8,12 @@
     <script src="src/upload_file.js"></script>
     <script src="src/API.js" defer></script>
     <script src="tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div class="home_box">
-        
+
         <div class="box_title">
             <div>
                 <img src="src/icons/home.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -19,14 +21,14 @@
             <p class="title_text">Home</p>
         </div>
 
-        <button class="div_button" onclick="">Upload Bank Statement</button>
-        <button class="div_button" onclick="">View Dashboard</button>
-        <button class="div_button" onclick="">Currency Tools</button>
+        <button class="div_button" onclick="location.href='#upload'">Upload Bank Statement</button>
+        <button class="div_button" onclick="location.href='#cate-box'">View Dashboard</button>
+        <button class="div_button" onclick="location.href='#curr-box'">Currency Tools</button>
     </div>
 
-    
-    <div class="upload_statement_box">
-        
+
+    <div class="upload_statement_box" id="upload">
+
         <div class="box_title">
             <div>
                 <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -35,17 +37,19 @@
         </div>
 
         <div class="upload_document">
-            
-            
-            <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
-            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file();" >
+
+
+            <button style="height: fit-content; width: fit-content;"
+                onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
+            <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;"
+                onchange="show_uploaded_file();">
         </div>
 
         <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
     </div>
 
-    <div class="catagorization_box">
-        
+    <div class="catagorization_box" id="cate-box">
+
         <div class="box_title">
             <div>
                 <img src="src/icons/catagory.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -62,7 +66,7 @@
     </div>
 
     <div class="dashboard_box">
-        
+
         <div class="box_title">
             <div>
                 <img src="src/icons/dashboard.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -81,8 +85,8 @@
         <button class="div_button" onclick="">Ask AI for suggestions</button>
     </div>
 
-    <div class="currency_tools_box">
-        
+    <div class="currency_tools_box" id="curr-box">
+
         <div class="box_title">
             <div>
                 <img src="src/icons/currency.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -91,39 +95,40 @@
         </div>
 
         <div class="currency_tools_records">
-           <label for="fromCurrency">From:</label>
-<input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
+            <label for="fromCurrency">From:</label>
+            <input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
 
-<datalist id="fromCurrencyList">
-  <!-- Options get populated dynamically -->
-</datalist>
+            <datalist id="fromCurrencyList">
+                <!-- Options get populated dynamically -->
+            </datalist>
 
-<label for="toCurrency">To:</label>
-<input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
+            <label for="toCurrency">To:</label>
+            <input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
 
-<datalist id="toCurrencyList">
-  <!-- Options get populated dynamically -->
-</datalist>
+            <datalist id="toCurrencyList">
+                <!-- Options get populated dynamically -->
+            </datalist>
+            <h2 id="resultRate"></h2>
         </div>
 
-        <button class="div_button" onclick="">Alert Me When Rates Drop</button>
+        <button class="div_button" onclick="retrieveRate()">Find Currency Rate</button>
     </div>
-    
-    
+
+
     <!--These are for the pdf upload functions-->
     <script>
-        let uploaded_file="";
+        let uploaded_file = "";
         let have_file = false;
-        let file_name="";
-        let is_pdf=false;
-        let pdf_too_large=true;
+        let file_name = "";
+        let is_pdf = false;
+        let pdf_too_large = true;
         let invalid_file = false;
         let pdf_json_input = {
             name: "input",
             content: "",
         };
         let transaction_json = "";
-        
+
     </script>
 
     <!--pdf.js configurations-->

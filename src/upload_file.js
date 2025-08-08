@@ -16,13 +16,10 @@ async function show_uploaded_file(){
         pdf_json_input.name = "text transaction record";
         transaction_json = JSON.stringify(pdf_json_input);
     }
-    //console.log(have_file, is_pdf, pdf_too_large);
     await replace();
 }
 
 async function replace() {
-    /*const result = await validation();
-    console.log(result);*/
         console.log(have_file, is_pdf, pdf_too_large);
         console.log(pdf_too_large);
         if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements

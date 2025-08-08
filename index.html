@@ -19,9 +19,9 @@
             <p class="title_text">Home</p>
         </div>
 
-        <button class="div_button" onclick="">Upload Bank Statement</button>
-        <button class="div_button" onclick="">View Dashboard</button>
-        <button class="div_button" onclick="">Currency Tools</button>
+        <div>
+            <p style="font-size: 24px; font-family: Arial;">Welcome to the "Upload your bank statement and we will summerize it for you" application, please upload your file in the section below, wait for 10 seconds and we will manage the rest.</p>
+        </div>
     </div>
 
     
@@ -44,22 +44,7 @@
         <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
     </div>
 
-    <div class="catagorization_box">
-        
-        <div class="box_title">
-            <div>
-                <img src="src/icons/catagory.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Categorization</p>
-        </div>
 
-        <div style="background-color: yellow;" id="summary">Insert transaction catagories here</div>
-
-        <div>
-            <button class="div_button" style="display: inline-flex; margin-right: 5px;" onclick="">Edit Tags</button>
-            <button class="div_button" style="display: inline-flex;" onclick="">Confirm & Continue</button>
-        </div>
-    </div>
 
     <div class="dashboard_box">
         
@@ -94,7 +79,7 @@
             <p>Insert currency records here</p>
         </div>
 
-        <button class="div_button" onclick="">Alert Me When Rates Drop</button>
+        <select class="currency_selection"></select>
     </div>
     
     

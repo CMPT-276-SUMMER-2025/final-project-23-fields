@@ -47,8 +47,6 @@ async function validation(json_input){
                 update_varibles_temp();
                 console.log(pdf.numPages);
                 console.log(uploaded_file.files[0].size);                
-                //temp_json = loadTextContent(pdf);
-                //return temp_json;
             });
         };
         
@@ -60,7 +58,6 @@ async function validation(json_input){
         console.error("Error reading PDF file:", event.target.error);
         };
         console.log(temp_json);
-        //return temp_json;
     }
     else if(uploaded_file.files[0].name.split('.')[1] !== "pdf"){
         console.log("please upload a pdf file");

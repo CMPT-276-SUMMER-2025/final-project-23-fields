@@ -1,11 +1,17 @@
 async function processPDF() {
+  let file = document.querySelector(".uploaded_pdf")
+  if (file.files.length < 1) {
+    document.querySelector("#error-message").style.display = "block"
+    document.querySelector("#error-message").innerHTML = "Please upload a pdf file first";
+    return;
+  } else if (!is_pdf || pdf_too_large || invalid_file) {
+    document.querySelector("#error-message").style.display = "block"
+    document.querySelector("#error-message").innerHTML = "Your file is not eligible to be processed. Please upload another one";
+    return;
+  }
   let template = '{"food": {name: amount}, "entertainment": {}, "utility bills": {}, "travel": {}, "other": {}}'
-  let categorized = await APICall("Inside the quotes, you have a bunch of transaction names and their costs: '"+ transaction_json + "'. using this template: " + template + ", organize everything into this template and don't respond with any text. Place only the merchant name and total amount spent inside and if it doesn't matches, create a new category inside the json")
-  createListsFromJSON(JSON.parse(categorized))
-  createPieChart()
-}
-function createPieChart() {
-
+  //let categorized = await APICall("Inside the quotes, you have a bunch of transaction names and their costs: '"+ transaction_json + "'. using this template: " + template + ", organize everything into this template and don't respond with any text. Place only the merchant name and total amount spent inside and if it doesn't matches, create a new category inside the json")
+  draw_chart()
 }
 
 const currencies = [

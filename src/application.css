@@ -54,6 +54,9 @@ button{
     grid-template-rows: 75px 1fr 1fr 1fr;
     height: 300px;
 }
+#error-message {
+    color: red;
+}
 
 .upload_statement_box{
     grid-template-rows: 75px 1fr 75px;

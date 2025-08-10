@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="src/application.css">
     <script src="src/pdf_validation.js"></script>
     <script src="src/upload_file.js"></script>
-    <script src="src/API.js" defer></script>
     <script src="src/draw_chart.js" defer></script>
+    <script src="src/API.js" defer></script>
     <script src="tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -49,6 +49,7 @@
         
         <button class="div_button" onclick="processPDF()">Extract Transactions</button>
         <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>
+        <p id="error-message" style="display: none;"></p>
     </div>
 
     <div class="dashboard_box">

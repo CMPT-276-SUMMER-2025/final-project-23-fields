@@ -1,5 +1,6 @@
 async function show_uploaded_file(){
     document.getElementById("loading-txt").style.display = "block";
+    document.querySelector("#error-message").style.display = "none";
     uploaded_file = document.querySelector('.uploaded_pdf'); 
     async function update_varibles() {
                     validation(pdf_json_input);        
@@ -72,7 +73,9 @@ async function replace() {
             </div>
 
             <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
-            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>
+            <p id="error-message" style="display: none;"></p>`;
+            
         }
         else if(!is_pdf){
             if(!invalid_file){
@@ -102,7 +105,8 @@ async function replace() {
             </div>
 
             <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
-            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>
+            <p id="error-message" style="display: none;"></p>`;
         }
         else if(pdf_too_large){
             if(!invalid_file){
@@ -131,7 +135,8 @@ async function replace() {
             </div>
 
             <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
-            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>
+            <p id="error-message" style="display: none;"></p>`;
         }
     }
 

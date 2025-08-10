@@ -7,6 +7,7 @@
     <script src="src/pdf_validation.js"></script>
     <script src="src/upload_file.js"></script>
     <script src="src/API.js" defer></script>
+    <script src="src/draw_chart.js" defer></script>
     <script src="tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -58,14 +59,15 @@
         </div>
 
         <div class="pie_chart_zone">
-            <p>Pie chart here</p>
+            <canvas class="js-myCanvas" width="200" height="200" style="margin-left: 100px;"></canvas>
+            <div class="label_zone"></div>
         </div>
 
         <div>
             <p>Total spend of this month:</p>
         </div>
 
-        <button class="div_button" onclick="">Ask AI for suggestions</button>
+        <button class="div_button" onclick="draw_chart();">Ask AI for suggestions</button>
     </div>
 
     <div class="currency_tools_box" id="curr-box">

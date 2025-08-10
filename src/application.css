@@ -71,8 +71,8 @@ button{
 }
 
 .dashboard_box{
-    grid-template-rows: 75px 2fr 1fr 1fr;
-    height: 300px;
+    grid-template-rows: 75px 3fr 1fr 1fr;
+    /*height: 300px;*/
 }
 
 .currency_tools_box{
@@ -90,8 +90,20 @@ button{
 }
 
 .pie_chart_zone{
-    background-color: gray;
     place-content: center center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.label_zone{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.label_item{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    margin-top: 6px;
 }
 
 .currency_tools_records{
@@ -125,9 +137,5 @@ button{
     font-family: Arial;
     border-radius: 3px;
     height: fit-content;
-    
-}
-
-.currency_selection{
     
 }

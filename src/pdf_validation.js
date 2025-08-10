@@ -5,7 +5,6 @@ async function validation(json_input){
         is_pdf = true;
         have_file=true;
         pdf_too_large=false;
-        console.log(pdf_url);
         let temp_json = {};
         
         
@@ -25,7 +24,6 @@ async function validation(json_input){
             loadingTask.then(pdf => {
                 async function loadTextContent(pdf_file,json_input) { //for text pdf but not scanned pictures, pages take some time to load, change console log to json once done
                     let full_text = "";
-                    console.log("getting text");
                         for (let i=1;i<pdf_file.numPages+1;i++){
                             const page = await pdf_file.getPage(i);
                             const content = await page.getTextContent();
@@ -34,7 +32,7 @@ async function validation(json_input){
                         }
                         //let temp_json = {name: "loaded content", content: full_text};
                         json_input.content = full_text;
-                        //console.log(pdf_json_input);
+                        
                 }
 
                 //access text content in the file
@@ -44,9 +42,7 @@ async function validation(json_input){
                     await sleep(3000);
 
                 }
-                update_varibles_temp();
-                console.log(pdf.numPages);
-                console.log(uploaded_file.files[0].size);                
+                update_varibles_temp();               
             });
         };
         
@@ -57,7 +53,6 @@ async function validation(json_input){
         reader.onerror = function(event) {
         console.error("Error reading PDF file:", event.target.error);
         };
-        console.log(temp_json);
     }
     else if(uploaded_file.files[0].name.split('.')[1] !== "pdf"){
         console.log("please upload a pdf file");
@@ -65,7 +60,9 @@ async function validation(json_input){
     }
     else if(!(uploaded_file.files[0].size < 10*1024*1024)){//10MB
         console.log("The pdf file is too large, it should be smaller than 10MB");
+        is_pdf = true;
         pdf_too_large=true;
+        
     }
     else{
         is_pdf=false;
@@ -73,8 +70,7 @@ async function validation(json_input){
         pdf_too_large=true;
         console.log("invalid upload file");
     }
-    console.log(uploaded_file.files[0].name.split('.')[1]);//extract extension from the file name
-    console.log(pdf_json_input);
+   // console.log(pdf_json_input);
 }
 
 

@@ -46,7 +46,9 @@
                 onchange="show_uploaded_file();">
         </div>
 
-        <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
+        
+        <button class="div_button" onclick="processPDF()">Extract Transactions</button>
+        <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>
     </div>
 
     <div class="dashboard_box">
@@ -83,16 +85,12 @@
             <label for="fromCurrency">From:</label>
             <input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
 
-            <datalist id="fromCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
+            <datalist id="fromCurrencyList"></datalist>
 
             <label for="toCurrency">To:</label>
             <input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
 
-            <datalist id="toCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
+            <datalist id="toCurrencyList"></datalist>
             <h2 id="resultRate"></h2>
         </div>
 

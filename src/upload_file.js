@@ -1,6 +1,6 @@
 async function show_uploaded_file(){
+    document.getElementById("loading-txt").style.display = "block";
     uploaded_file = document.querySelector('.uploaded_pdf'); 
-    console.log(have_file, is_pdf, pdf_too_large);
     async function update_varibles() {
                     validation(pdf_json_input);        
                     await sleep(7500);
@@ -9,14 +9,15 @@ async function show_uploaded_file(){
     update_varibles();    
 
     //pdf_json_input = await validation();
-    console.log(pdf_json_input);
+    //console.log(pdf_json_input);
     await update_varibles();
-    console.log(pdf_json_input);
+    //console.log(pdf_json_input);
     if(pdf_json_input.content !== ""){
         pdf_json_input.name = "text transaction record";
         transaction_json = JSON.stringify(pdf_json_input);
     }
     await replace();
+    document.getElementById("loading-txt").style.display = "none";
 }
 
 async function replace() {
@@ -27,6 +28,7 @@ async function replace() {
                 const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
                 pdf_icon_output.classList.add('upload_statement_box');
                 pdf_icon_output.classList.remove('upload_statement_box_invalid_file');
+                document.querySelector(".pdf_error_message").remove();
                 invalid_file = false;
             }
         //locate div and change content
@@ -42,7 +44,6 @@ async function replace() {
                 </div>
                 <p style="margin-left: 25px; font-family: Arial; font-size: 16px; font-weight: 600;">${uploaded_file.files[0].name}</p>
             </div>`;
-    
         }
         else if(uploaded_file.value === ""){
             if(!invalid_file){
@@ -70,7 +71,8 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Oops, it seems you haven't uploaded anything, please try again</p>
             </div>
 
-            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
         }
         else if(!is_pdf){
             if(!invalid_file){
@@ -96,10 +98,11 @@ async function replace() {
             </div>
 
             <div class="pdf_error_message">
-            <p style="margin-top: 5px; margin-bottom: 5px;">Please sumbit a file that is ended in .pdf</p>
+            <p style="margin-top: 5px; margin-bottom: 5px;">Please submit a file that is in .pdf format</p>
             </div>
 
-            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
         }
         else if(pdf_too_large){
             if(!invalid_file){
@@ -127,7 +130,8 @@ async function replace() {
             <p style="margin-top: 5px; margin-bottom: 5px;">Please submit a file that is smaller than 10MB</p>
             </div>
 
-            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
+            <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>
+            <p id="loading-txt" style="display: none;">Uploading your document. Please wait for a few moments...</p>`;
         }
     }
 

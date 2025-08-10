@@ -1,11 +1,11 @@
-async function draw_chart() {
+async function draw_chart(data) {
     let canvas = document.querySelector('.js-myCanvas');
     let ctx = canvas.getContext("2d");
     let lastend = 0;
-    let data = [200, 60, 15, 75]; // If you add more data values make sure you add more colors
+    console.log(data.length);
     let myTotal = 0; // Automatically calculated so don't touch
     let myColor = ["red", "green", "blue", "yellow"]; // Colors of each slice
-
+//window.location.href = 'src/result_page.html';
     for (let i = 0; i < data.length; i++) {
     myTotal += data[i];
     }

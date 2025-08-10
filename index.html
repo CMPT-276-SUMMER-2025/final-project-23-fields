@@ -77,7 +77,10 @@
             <p>Total spend of this month:</p>
         </div>
 
-        <button class="div_button" onclick="draw_chart();">Ask AI for suggestions</button>
+        <button class="div_button" onclick="draw_chart(data); data[2] = 400; const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
+        localStorage.setItem('chart_data', data_string);
+        window.location.href = 'src/result_page.html';
+         ">Ask AI for suggestions</button>
     </div>
 
     <div class="currency_tools_box" id="curr-box">
@@ -123,7 +126,7 @@
             content: "",
         };
         let transaction_json = "";
-
+        let data = [200, 60, 15, 75]; // If you add more data values make sure you add more colors
     </script>
 
     <!--pdf.js configurations-->

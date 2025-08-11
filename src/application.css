@@ -43,8 +43,10 @@ button{
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 50px;
-    border-style: dotted;
+    border-style:solid;
+    border-radius: 10px;
     border-color: rgb(80, 162, 255);
+    background-color: white;
     border-width: 5px;
     display: grid;
 
@@ -95,13 +97,13 @@ button{
 
 .label_zone{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .label_item{
     display: grid;
     grid-template-columns: 20px 1fr;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 .currency_tools_records input{

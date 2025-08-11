@@ -3,9 +3,9 @@ async function draw_chart(data) {
     let ctx = canvas.getContext("2d");
     let lastend = 0;
     console.log(data.length);
-    let myTotal = 0; // Automatically calculated so don't touch
-    let myColor = ["red", "green", "blue", "yellow"]; // Colors of each slice
-//window.location.href = 'src/result_page.html';
+    let myTotal = 0; 
+    let myData = ["food", "entertainment", "utility bills", "travel", "others"];
+    let myColor = ["red", "green", "blue", "yellow", "black"]; // Colors of each slice
     for (let i = 0; i < data.length; i++) {
     myTotal += data[i];
     }
@@ -30,12 +30,12 @@ async function draw_chart(data) {
     //Add labels
     let label_zone = document.querySelector('.label_zone');
     let label_total = "";
-    for(let i = 0; i< myColor.length; i++){
-        if (i === myColor.length-1){
+    for(let i = 0; i< myData.length; i++){
+        if (i === myData.length-1){
             label_total = label_total + `<div class=\"label_item\"><div style=\"background-color: ${myColor[i]}; margin-right: 3px \"></div>` +  ": Others</div>";
         }
         else{
-            label_total = label_total + `<div class=\"label_item\"><div style=\"background-color: ${myColor[i]}; margin-right: 3px \"></div>` +  ": variable" + (i+1) + "</div>";
+            label_total = label_total + `<div class=\"label_item\"><div style=\"background-color: ${myColor[i]}; margin-right: 3px \"></div>` +  `: ${myData[i]} </div>`;
         }
     }
     label_zone.innerHTML = `${label_total}`;

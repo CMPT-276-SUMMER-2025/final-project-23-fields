@@ -23,7 +23,7 @@
         </div>
 
         <div>
-            <p style="font-size: 24px; font-family: Arial; font-weight: 600;">Welcome to the "Upload your bank statement and we will summerize it for you" application, please upload your file in the section below, wait for 10 seconds and we will manage the rest.</p>
+            <p style="font-size: 24px; font-family: Arial; font-weight: 600;">Welcome to the "Upload your bank statement and we will summerize it for you" application, please upload your file in the section below, wait for 10 seconds until the pdf icon shows up and click "Extract Transaction", we will manage the rest.</p>
             <p style="font-size: 24px; font-family: Arial; font-weight: 600;">--By Fields(Group 23)</p>
         </div>
     </div>
@@ -47,71 +47,12 @@
                 onchange="show_uploaded_file();">
         </div>
 
-        <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
-    </div>
-
-    <div class="catagorization_box" id="cate-box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/catagory.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Categorization</p>
-        </div>
-    </div>
-
-    <div class="dashboard_box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/dashboard.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Dashboard</p>
-        </div>
-
-        <div class="pie_chart_zone">
-            <canvas class="js-myCanvas" width="200" height="200" style="margin-left: 100px;"></canvas>
-            <div class="label_zone"></div>
-        </div>
-
-        <div>
-            <p>Total spend of this month:</p>
-        </div>
-
-        <button class="div_button" onclick="draw_chart(data); data[2] = 400; const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
+        <button class="div_button" onclick="console.log(transaction_json);processPDF();const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
         localStorage.setItem('chart_data', data_string);
-        window.location.href = 'src/result_page.html';
-         ">Ask AI for suggestions</button>
+        window.location.href = 'src/result_page.html';">Extract Transactions</button>
     </div>
 
-    <div class="currency_tools_box" id="curr-box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/currency.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Currency Tools</p>
-        </div>
-
-        <div class="currency_tools_records">
-            <label for="fromCurrency">From:</label>
-            <input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
-
-            <datalist id="fromCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
-
-            <label for="toCurrency">To:</label>
-            <input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
-
-            <datalist id="toCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
-            <h2 id="resultRate"></h2>
-        </div>
-
-        <button class="div_button" onclick="retrieveRate()">Find Currency Rate</button>
-    </div>
+    
 
 
     <!--These are for the pdf upload functions-->
@@ -127,7 +68,7 @@
             content: "",
         };
         let transaction_json = "";
-        let data = [200, 60, 15, 75]; // If you add more data values make sure you add more colors
+        let data = [200, 60, 15, 75, 30]; // If you add more data values make sure you add more colors
     </script>
 
     <!--pdf.js configurations-->

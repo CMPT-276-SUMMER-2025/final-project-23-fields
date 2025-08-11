@@ -20,3 +20,10 @@ pdf.js is a Javascript library for loading and showing pdf files, a prebuilt ver
 The "pdf" object refer to the pdfjs-readable version of the uploaded pdf file.
 
 The basic task includes accessing the number of page of the pdf using pdf.numpage (async), and the file size by .size function of either "pdf" or the upload_file.files[0]. (sync version)
+
+# How to use this application
+*This application has to be hosted locally due to security issues brought by the PDF.js library
+1. Install http-server in your terminal using this command: npm install -g http-server
+2. Change the terminal directory into the project folder.
+3. Type http-server into the terminal.
+4. Using localhost:8080, the website should be show up on the browser.

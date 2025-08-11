@@ -25,7 +25,6 @@ async function validation(json_input){
             loadingTask.then(pdf => {
                 async function loadTextContent(pdf_file,json_input) { //for text pdf but not scanned pictures, pages take some time to load, change console log to json once done
                     let full_text = "";
-                    console.log("getting text");
                         for (let i=1;i<pdf_file.numPages+1;i++){
                             const page = await pdf_file.getPage(i);
                             const content = await page.getTextContent();
@@ -42,9 +41,7 @@ async function validation(json_input){
                     await sleep(3000);
 
                 }
-                update_varibles_temp();
-                console.log(pdf.numPages);
-                console.log(uploaded_file.files[0].size);                
+                update_varibles_temp();               
             });
         };
         
@@ -65,6 +62,7 @@ async function validation(json_input){
     }
     else if(!(uploaded_file.files[0].size < 10*1024*1024)){//10MB
         console.log("The pdf file is too large, it should be smaller than 10MB");
+        is_pdf = true;
         pdf_too_large=true;
         is_pdf=true;
         have_file = true;
@@ -77,8 +75,7 @@ async function validation(json_input){
         invalid_file = true;
         console.log("invalid upload file");
     }
-    console.log(uploaded_file.files[0].name.split('.')[1]);//extract extension from the file name
-    console.log(pdf_json_input);
+   
 }
 
 

@@ -35,7 +35,7 @@ button{
 }
 
 /*Division settings*/
-.home_box, .upload_statement_box, .upload_statement_box_invalid_file, .catagorization_box, .dashboard_box, .currency_tools_box{
+.home_box, .upload_statement_box, .upload_statement_box_invalid_file, .dashboard_box, .currency_tools_box{
     width: 1fr;
     margin-left: 50px;
     margin-right: 50px;
@@ -56,6 +56,9 @@ button{
     grid-template-rows: 75px 1fr;
     height: fit-content;
 }
+#error-message {
+    color: red;
+}
 
 .upload_statement_box{
     grid-template-rows: 75px 1fr 75px;
@@ -65,11 +68,6 @@ button{
 .upload_statement_box_invalid_file{
     grid-template-rows: 75px 1fr 0.5fr 75px;
     height: fit-content;
-}
-
-.catagorization_box{
-    grid-template-rows: 75px 2fr 1fr;
-    height: 300px;
 }
 
 .dashboard_box{
@@ -108,8 +106,8 @@ button{
     margin-top: 10px;
 }
 
-.currency_tools_records{
-    background-color: gray;
+.currency_tools_records input{
+    display: block;
 }
 
 .pdf_item{

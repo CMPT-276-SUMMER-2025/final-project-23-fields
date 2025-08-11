@@ -50,6 +50,8 @@
         <button class="div_button" onclick="console.log(transaction_json);processPDF();const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
         localStorage.setItem('chart_data', data_string);
         window.location.href = 'src/result_page.html';">Extract Transactions</button>
+        <p id="loading-txt" style="display: none">Your document is being uploaded. Please wait a few moments...</p>
+        <p id="error-message" style="display: none;"></p>
     </div>
 
     

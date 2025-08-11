@@ -17,9 +17,6 @@ async function processPDF() {
   localStorage.setItem('chart_data', data_string);
   window.location.href = 'src/result_page.html';
 }
-function createPieChart() {
-
-}
 
 const currencies = [
   { code: "USD", name: "United States Dollar" },
@@ -30,7 +27,7 @@ const currencies = [
   { code: "AUD", name: "Australian Dollar" }
 ];
 
-function populateDataList(listId) {
+function createDataList(listId) {
   const list = document.getElementById(listId);
   currencies.forEach(currency => {
     const option = document.createElement("option");
@@ -40,8 +37,8 @@ function populateDataList(listId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  populateDataList("fromCurrencyList");
-  populateDataList("toCurrencyList");
+  createDataList("fromCurrencyList");
+  createDataList("toCurrencyList");
 });
 
 async function retrieveRate() {
@@ -50,39 +47,9 @@ async function retrieveRate() {
   let message = "What is 1 " + userCurr + " to 1 " + desiredCurr + " using the latest rate? respond only with the number, nothing else. If given a non-existent currency, just respond 'error'"
 
   let result = await APICall(message);
-  document.getElementById("resultRate").textContent = result;
+  document.getElementById("resultRate").textContent = "1 " + userCurr + " is " + result + " " + desiredCurr;
 }
 
-function createListsFromJSON(data) {
-  const container = document.getElementById("summary");
-
-  for (const category in data) {
-    // Create header
-    const header = document.createElement("h2");
-    header.textContent = category;
-    container.appendChild(header);
-
-    // Create unordered list
-    const ul = document.createElement("ul");
-
-    const items = data[category];
-    const keys = Object.keys(items);
-
-    if (keys.length > 0) {
-      keys.forEach(key => {
-        const li = document.createElement("li");
-        li.textContent = `${key}: ${items[key]}`;
-        ul.appendChild(li);
-      });
-    } else {
-      const li = document.createElement("li");
-      li.textContent = "(No items)";
-      ul.appendChild(li);
-    }
-
-    container.appendChild(ul);
-  }
-}
 
 async function APICall(message) {
   const proxyUrl = "https://corsproxy.io/?";

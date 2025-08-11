@@ -5,8 +5,8 @@ async function validation(json_input){
         is_pdf = true;
         have_file=true;
         pdf_too_large=false;
+        invalid_file = false;
         console.log(pdf_url);
-        let temp_json = {};
         
         
         
@@ -32,9 +32,7 @@ async function validation(json_input){
                             const page_text = content.items.map(item => item.str).join(' ');
                             full_text = full_text + "\n" + page_text;
                         }
-                        //let temp_json = {name: "loaded content", content: full_text};
                         json_input.content = full_text;
-                        //console.log(pdf_json_input);
                 }
 
                 //access text content in the file
@@ -57,20 +55,26 @@ async function validation(json_input){
         reader.onerror = function(event) {
         console.error("Error reading PDF file:", event.target.error);
         };
-        console.log(temp_json);
     }
     else if(uploaded_file.files[0].name.split('.')[1] !== "pdf"){
         console.log("please upload a pdf file");
         is_pdf=false;
+        have_file = true;
+        pdf_too_large = false;
+        invalid_file = true;
     }
     else if(!(uploaded_file.files[0].size < 10*1024*1024)){//10MB
         console.log("The pdf file is too large, it should be smaller than 10MB");
         pdf_too_large=true;
+        is_pdf=true;
+        have_file = true;
+        invalid_file = true;
     }
     else{
         is_pdf=false;
         have_file=false;
         pdf_too_large=true;
+        invalid_file = true;
         console.log("invalid upload file");
     }
     console.log(uploaded_file.files[0].name.split('.')[1]);//extract extension from the file name

@@ -53,8 +53,8 @@ button{
 }
 
 .home_box{
-    grid-template-rows: 75px 1fr 1fr 1fr;
-    height: 300px;
+    grid-template-rows: 75px 1fr;
+    height: fit-content;
 }
 
 .upload_statement_box{

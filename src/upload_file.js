@@ -17,21 +17,34 @@ async function show_uploaded_file(){
         transaction_json = JSON.stringify(pdf_json_input);
     }
     await replace();
+    await APICall(transaction_json);
 }
 
 async function replace() {
         console.log(have_file, is_pdf, pdf_too_large);
         console.log(pdf_too_large);
         if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements
-            if(invalid_file){
+            let pdf_icon_output = document.querySelector('.upload_statement_box');
+            if(!pdf_icon_output){
+                pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            }
+            /*if(invalid_file){
                 const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
                 pdf_icon_output.classList.add('upload_statement_box');
                 pdf_icon_output.classList.remove('upload_statement_box_invalid_file');
                 invalid_file = false;
             }
         //locate div and change content
-        const pdf_icon_output = document.querySelector('.upload_document');
-        pdf_icon_output.innerHTML = `<button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
+        const pdf_icon_output = document.querySelector('.upload_statement_box');*/
+        pdf_icon_output.innerHTML = `
+        <div class="box_title">
+            <div>
+                <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Upload Statement</p>
+        </div>
+        <div class="upload_document">
+        <button style="height: fit-content; width: fit-content;" onclick="document.querySelector('.uploaded_pdf').click();">Upload file</button>
             <input type="file" class="uploaded_pdf" accept=".pdf" style="display: none;" onchange="show_uploaded_file(); ">
             <div class="pdf_item">
                 <div>
@@ -41,17 +54,26 @@ async function replace() {
                     <img class="pdf_icon" src="src/icons/pdf_logo.png">
                 </div>
                 <p style="margin-left: 25px; font-family: Arial; font-size: 16px; font-weight: 600;">${uploaded_file.files[0].name}</p>
-            </div>`;
-    
+            </div>
+            </div>
+
+        <button class="div_button" onclick="console.log(transaction_json);processPDF();const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
+        localStorage.setItem('chart_data', data_string);
+        window.location.href = 'src/result_page.html';">Extract Transactions</button>
+            `;
+            
         }
         else if(uploaded_file.value === ""){
-            if(!invalid_file){
+            let pdf_icon_output = document.querySelector('.upload_statement_box');
+            if(!pdf_icon_output){
+                pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            }
+            /*if(invalid_file){
                 const pdf_icon_output = document.querySelector('.upload_statement_box');
                 pdf_icon_output.classList.add('upload_statement_box_invalid_file');
                 pdf_icon_output.classList.remove('upload_statement_box');
-                invalid_file = true;
             }
-            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');*/
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
                 <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -73,14 +95,16 @@ async function replace() {
             <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
         else if(!is_pdf){
-            if(!invalid_file){
+            let pdf_icon_output = document.querySelector('.upload_statement_box');
+            if(!pdf_icon_output){
+                pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            }
+            /*if(invalid_file){
                 const pdf_icon_output = document.querySelector('.upload_statement_box');
                 pdf_icon_output.classList.add('upload_statement_box_invalid_file');
                 pdf_icon_output.classList.remove('upload_statement_box');
-                invalid_file = true;
             }
-            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
-            console.log(pdf_icon_output);
+            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');*/
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
                 <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">
@@ -102,13 +126,16 @@ async function replace() {
             <button class="div_button" onclick="console.log(pdf_json_input.content);processPDF()">Extract Transactions</button>`;
         }
         else if(pdf_too_large){
-            if(!invalid_file){
+            let pdf_icon_output = document.querySelector('.upload_statement_box');
+            if(!pdf_icon_output){
+                pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            }
+            /*if(invalid_file){
                 const pdf_icon_output = document.querySelector('.upload_statement_box');
                 pdf_icon_output.classList.add('upload_statement_box_invalid_file');
                 pdf_icon_output.classList.remove('upload_statement_box');
-                invalid_file = true;
             }
-            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
+            const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');*/
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
                 <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">

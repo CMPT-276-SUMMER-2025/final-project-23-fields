@@ -27,3 +27,5 @@ The basic task includes accessing the number of page of the pdf using pdf.numpag
 2. Change the terminal directory into the project folder.
 3. Type http-server into the terminal.
 4. Using localhost:8080, the website should be show up on the browser.
+
+Website URL Correction: https://cmpt-276-summer-2025.github.io/final-project-23-fields/

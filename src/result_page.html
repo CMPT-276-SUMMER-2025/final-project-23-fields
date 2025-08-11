@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>results</title>
+    <link rel="icon" type="image/x-icon" href="./icons/favicon.png">
+    <link rel="stylesheet" href="application.css">
+    <script src="pdf_validation.js"></script>
+    <script src="upload_file.js"></script>
+    <script src="API.js" defer></script>
+    <script src="draw_chart.js" ></script>
+    <script src="../tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="background-color: rgb(163, 203, 248);">
+    
+    <p style="font-size: 36px; font-family: Arial; font-weight: 700; margin: 20px; margin-left: 100px; margin-bottom: 0px;">Results</p>
+    
+    <div class="dashboard_box">
+
+        <div class="box_title">
+            <div>
+                <img src="icons/dashboard.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Dashboard</p>
+        </div>
+
+        <div class="pie_chart_zone">
+            <canvas class="js-myCanvas" width="200" height="200" style="margin-left: 100px;"></canvas>
+            <div class="label_zone"></div>
+        </div>
+
+        <div>
+            <p>Total spend of this month:</p>
+        </div>
+
+        <button class="div_button" onclick="draw_chart(data);">Ask AI for suggestions</button>
+    </div>
+
+    <div class="currency_tools_box" id="curr-box">
+
+        <div class="box_title">
+            <div>
+                <img src="icons/currency.png" style="height: 30px; width: 30px; object-fit: scale-down;">
+            </div>
+            <p class="title_text">Currency Tools</p>
+        </div>
+
+        <div class="currency_tools_records">
+            <label for="fromCurrency">From:</label>
+            <input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
+
+            <datalist id="fromCurrencyList">
+                <!-- Options get populated dynamically -->
+            </datalist>
+
+            <label for="toCurrency">To:</label>
+            <input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
+
+            <datalist id="toCurrencyList">
+                <!-- Options get populated dynamically -->
+            </datalist>
+            <h2 id="resultRate"></h2>
+        </div>
+
+        <button class="div_button" onclick="retrieveRate()">Find Currency Rate</button>
+    </div>
+
+    <script>
+        const data_string = localStorage.getItem('chart_data');
+        const data = JSON.parse(data_string);
+        console.log(data);
+        draw_chart(data);
+    </script>
+
+</body>
+</html>

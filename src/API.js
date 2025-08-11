@@ -1,8 +1,11 @@
 async function processPDF() {
   let template = '{"food": {name: amount}, "entertainment": {}, "utility bills": {}, "travel": {}, "other": {}}'
   let categorized = await APICall("Inside the quotes, you have a bunch of transaction names and their costs: '"+ transaction_json + "'. using this template: " + template + ", organize everything into this template and don't respond with any text. Place only the merchant name and total amount spent inside and if it doesn't matches, create a new category inside the json")
-  createListsFromJSON(JSON.parse(categorized))
-  createPieChart()
+  createListsFromJSON(JSON.parse(categorized));
+  //Jump to the result page with modified data
+  const data_string = JSON.stringify(data);
+  localStorage.setItem('chart_data', data_string);
+  window.location.href = 'src/result_page.html';
 }
 function createPieChart() {
 

@@ -3,27 +3,33 @@
 
 <head>
     <title>23 Final project</title>
+    <link rel="icon" type="image/x-icon" href="/src/icons/favicon.png">
     <link rel="stylesheet" href="src/application.css">
     <script src="src/pdf_validation.js"></script>
     <script src="src/upload_file.js"></script>
     <script src="src/API.js" defer></script>
+    <script src="src/draw_chart.js" defer></script>
     <script src="tools/pdfjs-5.3.93-dist/build/pdf.mjs" type="module" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body style="background-color: rgb(163, 203, 248);">
+    <p style="font-size: 36px; font-family: Arial; font-weight: 700; margin: 20px; margin-left: 100px; margin-bottom: 0px;">Welcome</p>
+
     <div class="home_box">
 
         <div class="box_title">
             <div>
                 <img src="src/icons/home.png" style="height: 30px; width: 30px; object-fit: scale-down;">
             </div>
-            <p class="title_text">Home</p>
+            <p class="title_text">Bank Transaction Summarizer</p>
         </div>
 
-        <button class="div_button" onclick="location.href='#upload'">Upload Bank Statement</button>
-        <button class="div_button" onclick="location.href='#cate-box'">View Dashboard</button>
-        <button class="div_button" onclick="location.href='#curr-box'">Currency Tools</button>
+        <div>
+            <p style="font-size: 24px; font-family: Arial; font-weight: 600; padding-bottom: 10px;">Welcome to the "Upload your bank statement and we will summarize it for you" application</p>
+            <p style="font-size: 24px; font-family: Arial; font-weight: 600; padding-bottom: 10px;"> Please upload your file in the section below, wait for 10 seconds until the pdf icon shows up, and click "Extract Transaction", we will manage the rest.</p>
+            <p style="font-size: 24px; font-family: Arial; font-weight: 600; padding-bottom: 10px;">--By Fields(Group 23)</p>
+        </div>
     </div>
 
 
@@ -45,74 +51,12 @@
                 onchange="show_uploaded_file();">
         </div>
 
-        <button class="div_button" onclick="console.log(transaction_json);processPDF()">Extract Transactions</button>
+        <button class="div_button" onclick="console.log(transaction_json);processPDF();const data_string = JSON.stringify(data); console.log(data_string,JSON.parse(data_string).length);
+        localStorage.setItem('chart_data', data_string);
+        window.location.href = 'src/result_page.html';">Extract Transactions</button>
     </div>
 
-    <div class="catagorization_box" id="cate-box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/catagory.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Categorization</p>
-        </div>
-
-        <div style="background-color: yellow;" id="summary">Insert transaction catagories here</div>
-
-        <div>
-            <button class="div_button" style="display: inline-flex; margin-right: 5px;" onclick="">Edit Tags</button>
-            <button class="div_button" style="display: inline-flex;" onclick="">Confirm & Continue</button>
-        </div>
-    </div>
-
-    <div class="dashboard_box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/dashboard.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Dashboard</p>
-        </div>
-
-        <div class="pie_chart_zone">
-            <p>Pie chart here</p>
-        </div>
-
-        <div>
-            <p>Total spend of this month:</p>
-        </div>
-
-        <button class="div_button" onclick="">Ask AI for suggestions</button>
-    </div>
-
-    <div class="currency_tools_box" id="curr-box">
-
-        <div class="box_title">
-            <div>
-                <img src="src/icons/currency.png" style="height: 30px; width: 30px; object-fit: scale-down;">
-            </div>
-            <p class="title_text">Currency Tools</p>
-        </div>
-
-        <div class="currency_tools_records">
-            <label for="fromCurrency">From:</label>
-            <input list="fromCurrencyList" id="fromCurrencyInput" name="fromCurrency">
-
-            <datalist id="fromCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
-
-            <label for="toCurrency">To:</label>
-            <input list="toCurrencyList" id="toCurrencyInput" name="toCurrency">
-
-            <datalist id="toCurrencyList">
-                <!-- Options get populated dynamically -->
-            </datalist>
-            <h2 id="resultRate"></h2>
-        </div>
-
-        <button class="div_button" onclick="retrieveRate()">Find Currency Rate</button>
-    </div>
+    
 
 
     <!--These are for the pdf upload functions-->
@@ -128,7 +72,7 @@
             content: "",
         };
         let transaction_json = "";
-
+        let data = [200, 60, 15, 75, 30]; // If you add more data values make sure you add more colors
     </script>
 
     <!--pdf.js configurations-->

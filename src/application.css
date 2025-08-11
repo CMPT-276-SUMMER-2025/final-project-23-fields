@@ -43,16 +43,18 @@ button{
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 50px;
-    border-style: dotted;
+    border-style:solid;
+    border-radius: 10px;
     border-color: rgb(80, 162, 255);
+    background-color: white;
     border-width: 5px;
     display: grid;
 
 }
 
 .home_box{
-    grid-template-rows: 75px 1fr 1fr 1fr;
-    height: 300px;
+    grid-template-rows: 75px 1fr;
+    height: fit-content;
 }
 
 .upload_statement_box{
@@ -71,8 +73,8 @@ button{
 }
 
 .dashboard_box{
-    grid-template-rows: 75px 2fr 1fr 1fr;
-    height: 300px;
+    grid-template-rows: 75px 3fr 1fr 1fr;
+    /*height: 300px;*/
 }
 
 .currency_tools_box{
@@ -90,8 +92,20 @@ button{
 }
 
 .pie_chart_zone{
-    background-color: gray;
     place-content: center center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.label_zone{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.label_item{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    margin-top: 10px;
 }
 
 .currency_tools_records{

@@ -70,7 +70,7 @@ async function validation(json_input){
         pdf_too_large=true;
         console.log("invalid upload file");
     }
-   // console.log(pdf_json_input);
+   
 }
 
 

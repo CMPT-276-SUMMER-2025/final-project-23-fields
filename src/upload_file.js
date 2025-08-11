@@ -9,10 +9,8 @@ async function show_uploaded_file(){
                 }
     update_varibles();    
 
-    //pdf_json_input = await validation();
-    //console.log(pdf_json_input);
     await update_varibles();
-    //console.log(pdf_json_input);
+
     if(pdf_json_input.content !== ""){
         pdf_json_input.name = "text transaction record";
         transaction_json = JSON.stringify(pdf_json_input);
@@ -22,8 +20,6 @@ async function show_uploaded_file(){
 }
 
 async function replace() {
-        console.log(have_file, is_pdf, pdf_too_large);
-        console.log(pdf_too_large);
         if (uploaded_file.value !== "" && is_pdf && have_file && !pdf_too_large){//display pdf icon, name and remove button if the pdf meet all requirements
             if(invalid_file){
                 const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
@@ -85,7 +81,6 @@ async function replace() {
                 invalid_file = true;
             }
             const pdf_icon_output = document.querySelector('.upload_statement_box_invalid_file');
-            console.log(pdf_icon_output);
             pdf_icon_output.innerHTML = `<div class="box_title">
             <div>
                 <img src="src/icons/upload.png" style="height: 30px; width: 30px; object-fit: scale-down;">

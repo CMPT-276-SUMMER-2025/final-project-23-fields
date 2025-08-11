@@ -105,6 +105,5 @@ async function APICall(message) {
   }
 
   const result = await response.json();
-  console.log(result.choices[0].message.content);
   return result.choices[0].message.content;
 }

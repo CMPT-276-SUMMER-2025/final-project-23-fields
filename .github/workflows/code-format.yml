@@ -20,7 +20,10 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci --include=dev
+        
+      - name: Fix eslint executable permissions
+        run: chmod +x node_modules/.bin/eslint
 
       - name: Run Linters
         run: npm run lint
